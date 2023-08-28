@@ -36,3 +36,19 @@ exports.createNewOrder = async (req, res) => {
         console.log(error.message);
     }
 };
+
+exports.getAllOrders = async (req, res) => {
+
+};
+
+exports.getOrder = async (req, res) => {
+
+};
+
+exports.updateOrder = async (req, res) => {
+
+};
+
+exports.deleteOrder = async (req, res) => {
+
+};
