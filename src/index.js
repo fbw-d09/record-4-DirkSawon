@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 
 const port = process.env.PORT;
 
+// als controller in routen auslagern: 
 app.post('/orders/', async (req, res) => {
     console.log(req.body);
 
@@ -49,4 +50,8 @@ app.post('/orders/', async (req, res) => {
     } catch (error) {
         console.log(error.message);
     }
-})
+});
+
+app.listen(port, () => {
+    console.log(`Server läuft auf port ${ port }`);
+});
