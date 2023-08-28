@@ -1,5 +1,5 @@
-const Record = require('.models/Record.js');
-const { connect, closeConnection } = require('./configs/db.js');
+const Record = require('../models/Record.js');
+const { connect, closeConnection } = require('../configs/db.js');
 
 exports.createNewRecord = async (req, res) => {
     console.log(req.body);

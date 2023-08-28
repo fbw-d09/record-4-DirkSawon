@@ -1,5 +1,5 @@
-const User = require('./models/User.js');
-const { connect, closeConnection } = require('./configs/db.js');
+const User = require('../models/User.js');
+const { connect, closeConnection } = require('../configs/db.js');
 
 exports.createNewUser = async (req, res) => {
     console.log(req.body);

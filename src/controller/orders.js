@@ -1,5 +1,5 @@
-const Order = require('./models/Order.js');
-const { connect, closeConnection } = require('./configs/db.js');
+const Order = require('../models/Order.js');
+const { connect, closeConnection } = require('../configs/db.js');
 
 exports.createNewOrder = async (req, res) => {
     console.log(req.body);
