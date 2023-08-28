@@ -1,7 +1,7 @@
 const Order = require('./models/Order.js');
 const { connect, closeConnection } = require('./configs/db.js');
 
-exports.getAllOrders = async (req, res) => {
+exports.createNewOrder = async (req, res) => {
     console.log(req.body);
 
     const { id, qty } = req.body;
