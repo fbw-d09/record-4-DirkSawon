@@ -5,7 +5,6 @@ const schema = new Schema({
     firstname: String,
     lastname: String,
     email: String,
-    cover: String,
     password: String
 }, { timestamps: true});
 
