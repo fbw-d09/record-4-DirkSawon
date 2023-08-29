@@ -84,7 +84,7 @@ if (args[0] === "init" && args[1] === "-db") {
       const title = chance.sentence({ words: 5 });
       const artist = chance.sentence({ words: 2 });
       const year = chance.integer({ min: 1950, max: 2024});
-      const cover = `https://www.record-shop.com/${chance.string(length: 5)}`;
+      const cover = `https://www.record-shop.com/${chance.string({length: 5})}`;
       const price = chance.integer({ min: 10, max: 20 });
   
       record.push({
