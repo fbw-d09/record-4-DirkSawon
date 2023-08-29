@@ -69,7 +69,7 @@ exports.getUser = async (req, res) => {
     try {
         connect().then(async, (db) => {
             User
-            .findOne({ _id: id})
+            .findOne({ id: id}) // .findOne({ _id: id})
             .then(doc => {
                 res.status(200).json({
                     success: true,
@@ -94,7 +94,7 @@ exports.updateUser = async (req, res) => {
     try {
         connect().then(async (db) => {
             User
-            .findOne({ _id: id})
+            .findOne({ id: id}) // .findOne({ _id: id})
             .then(doc => {
                 doc.firstname = req.body.firstname || doc.firstname;
                 doc.lastname = req.body.lastname || doc.lastname;
@@ -124,7 +124,7 @@ exports.deleteUser = async (req, res) => {
     try {
         connect().then(async (db) => {
             User
-            .deleteOne({ _id: id })
+            .deleteOne({ _id: id }) // .deleteOne({ _id: id })
             .then(doc => {
                 res.status(200).json({
                     success: false,

@@ -66,7 +66,7 @@ exports.getOrder = async (req, res) => {
     try {
         connect().then(async, (db) => {
             Order
-            .findOne({ _id: id})
+            .findOne({ id: id}) // .findOne({ _id: id})
             .then(doc => {
                 res.status(200).json({
                     success: true,
@@ -91,7 +91,7 @@ exports.updateOrder = async (req, res) => {
     try {
         connect().then(async (db) => {
             Order
-            .findOne({ _id: id})
+            .findOne({ id: id}) // eigentlich .findOne({ _id: id })
             .then(doc => {
                 doc.id = req.body.id || doc.id;
                 doc.qty = req.body.qty || doc.qty;
@@ -119,7 +119,7 @@ exports.deleteOrder = async (req, res) => {
     try {
         connect().then(async (db) => {
             Order
-            .deleteOne({ _id: id })
+            .deleteOne({ id: id }) // .deleteOne({ _id: id })
             .then(doc => {
                 res.status(200).json({
                     success: false,

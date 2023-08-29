@@ -70,7 +70,7 @@ exports.getRecord = async (req, res) => {
     try {
         connect().then(async, (db) => {
             Record
-            .findOne({ _id: id})
+            .findOne({ id: id}) // .findOne({ _id: id})
             .then(doc => {
                 res.status(200).json({
                     success: true,
@@ -95,7 +95,7 @@ exports.updateRecord = async (req, res) => {
     try {
         connect().then(async (db) => {
             Record
-            .findOne({ _id: id})
+            .findOne({ id: id}) // .findOne({ _id: id})
             .then(doc => {
                 doc.id = req.body.id || doc.id;
                 doc.title = req.body.title || doc.title;
@@ -127,7 +127,7 @@ exports.deleteRecord = async (req, res) => {
     try {
         connect().then(async (db) => {
             Record
-            .deleteOne({ _id: id })
+            .deleteOne({ id: id }) // .deleteOne({ _id: id })
             .then(doc => {
                 res.status(200).json({
                     success: false,
