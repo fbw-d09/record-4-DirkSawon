@@ -63,6 +63,26 @@ exports.getAllUsers = async (req, res) => {
     }
 };
 
+
+// Brain-Stormen wie eine Filterfunktion via GET Anfrage realisiert werden kann (z.B. über Routen, welche Parameter übergeben werden, usw.)
+exports.filterUser = async (req, res) => {
+    console.log(req.body);
+
+    const { key, filter, value } = req.body;
+
+    // Filternamen/Methoden definieren:
+    /**  
+    /* Grundschema: 
+    /*  Ein Suchkriterium: .where(Schlüssel)."filter(Wert)"
+    /*  Mehrere Kritierien: .where(Schlüssel_1)."filter_1(Wert_1)".where(Schlüssel_2)."filter_2(Wert2).[...].where(Schlüssel_n)."filter_n(Wert_n)"
+    /* z.B. schlüssel, filter, wert
+    **/
+
+    console.log(filter);
+
+    res.status(200).json({ success: true, key: key, filter: filter, value: value });
+};
+
 exports.getUser = async (req, res) => {
     const { id } = req.params;
 

@@ -85,6 +85,10 @@ exports.getOrder = async (req, res) => {
     }
 };
 
+exports.filterOrders = async (req, res) => {
+
+};
+
 exports.updateOrder = async (req, res) => {
     const { id } = req.params;
 

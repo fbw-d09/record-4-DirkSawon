@@ -89,6 +89,10 @@ exports.getRecord = async (req, res) => {
     }
 };
 
+exports.filterRecords = async (req, res) => {
+    console.log(req.body);
+};
+
 exports.updateRecord = async (req, res) => {
     const { id } = req.params;
 
