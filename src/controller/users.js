@@ -130,21 +130,46 @@ exports.filterUser = async (req, res) => {
         case '1':
             try {
                 connect().then(async (db) => {
-                    User
-                    .where(key1)
-                    .equals(val1)
-                    .then(docs => {
-                        res.status(200).json({
-                            success: true,
-                            data: docs
+                    if(rel1 === "=") {
+                        User
+                        .where(key1)
+                        .equals(val1)
+                        .then(docs => {
+                            res.status(200).json({
+                                success: true,
+                                data: docs
+                            })
                         })
-                    })
-                    .catch(err => {
+                        .catch(err => {
+                            res.status(404).json({
+                                success: false,
+                                message: err.message
+                            })
+                        })
+                    }
+                    else if(rel1 = "!=") {
+                        User
+                        .where(key1)
+                        .ne(val1)
+                        .then(docs => {
+                            res.status(200).json({
+                                success: true,
+                                data: docs
+                            })
+                        })
+                        .catch(err => {
+                            res.status(404).json({
+                                success: false,
+                                message: err.message
+                            })
+                        })
+                    }
+                    else {
                         res.status(404).json({
                             success: false,
-                            message: err.message
+                            message: "operation not available"
                         })
-                    })
+                    }
                 })
             } catch (error) {
                 console.log(error.message);
@@ -154,23 +179,88 @@ exports.filterUser = async (req, res) => {
         case '2':
             try {
                 connect().then(async (db) => {
-                    User
-                    .where(key1)
-                    .equals(val1)
-                    .where(key2)
-                    .equals(val2)
-                    .then(docs => {
-                        res.status(200).json({
-                            success: true,
-                            data: docs
+                    if(rel1 === "=" && rel2 === "=") {                    
+                        User
+                        .where(key1)
+                        .equals(val1)
+                        .where(key2)
+                        .equals(val2)
+                        .then(docs => {
+                            res.status(200).json({
+                                success: true,
+                                data: docs
+                            })
                         })
-                    })
-                    .catch(err => {
+                        .catch(err => {
+                            res.status(404).json({
+                                success: false,
+                                message: err.message
+                            })
+                        })
+                    }
+                    else if(rel1 === "=" && rel2 === "!=") {
+                        User
+                        .where(key1)
+                        .equals(val1)
+                        .where(key2)
+                        .ne(val2)
+                        .then(docs => {
+                            res.status(200).json({
+                                success: true,
+                                data: docs
+                            })
+                        })
+                        .catch(err => {
+                            res.status(404).json({
+                                success: false,
+                                message: err.message
+                            })
+                        })
+                    }
+                    else if(rel1 === "!=" && rel2 === "=") {
+                        User
+                        .where(key1)
+                        .ne(val1)
+                        .where(key2)
+                        .equals(val2)
+                        .then(docs => {
+                            res.status(200).json({
+                                success: true,
+                                data: docs
+                            })
+                        })
+                        .catch(err => {
+                            res.status(404).json({
+                                success: false,
+                                message: err.message
+                            })
+                        })
+                    }
+                    else if(rel1 === "!=" && rel2 === "!=") {
+                        User
+                        .where(key1)
+                        .ne(val1)
+                        .where(key2)
+                        .ne(val2)
+                        .then(docs => {
+                            res.status(200).json({
+                                success: true,
+                                data: docs
+                            })
+                        })
+                        .catch(err => {
+                            res.status(404).json({
+                                success: false,
+                                message: err.message
+                            })
+                        })
+                    }
+                    else {
                         res.status(404).json({
                             success: false,
-                            message: err.message
+                            message: "operation not available"
                         })
-                    })
+                    }
                 })
             } catch (error) {
                 console.log(error.message);
@@ -180,25 +270,198 @@ exports.filterUser = async (req, res) => {
         case '3':
             try {
                 connect().then(async (db) => {
-                    User
-                    .where(key1)
-                    .equals(val1)
-                    .where(key2)
-                    .equals(val2)
-                    .where(key3)
-                    .equals(val3)
-                    .then(docs => {
-                        res.status(200).json({
-                            success: true,
-                            data: docs
+                    if(rel1 === "=" && rel2 === "=" && rel3 === "=") {
+                        User
+                        .where(key1)
+                        .equals(val1)
+                        .where(key2)
+                        .equals(val2)
+                        .where(key3)
+                        .equals(val3)
+                        .then(docs => {
+                            res.status(200).json({
+                                success: true,
+                                data: docs
+                            })
                         })
-                    })
-                    .catch(err => {
-                        res.status(404).json({
-                            success: false,
-                            message: err.message
+                        .catch(err => {
+                            res.status(404).json({
+                                success: false,
+                                message: err.message
+                            })
                         })
-                    })
+                    }
+                    if(rel1 === "=" && rel2 === "=" && rel3 === "!=") {
+                        User
+                        .where(key1)
+                        .equals(val1)
+                        .where(key2)
+                        .equals(val2)
+                        .where(key3)
+                        .ne(val3)
+                        .then(docs => {
+                            res.status(200).json({
+                                success: true,
+                                data: docs
+                            })
+                        })
+                        .catch(err => {
+                            res.status(404).json({
+                                success: false,
+                                message: err.message
+                            })
+                        })
+                    }
+                    if(rel1 === "=" && rel2 === "!=" && rel3 === "=") {
+                        User
+                        .where(key1)
+                        .equals(val1)
+                        .where(key2)
+                        .ne(val2)
+                        .where(key3)
+                        .equals(val3)
+                        .then(docs => {
+                            res.status(200).json({
+                                success: true,
+                                data: docs
+                            })
+                        })
+                        .catch(err => {
+                            res.status(404).json({
+                                success: false,
+                                message: err.message
+                            })
+                        })
+                    }
+                    if(rel1 === "!=" && rel2 === "=" && rel3 === "=") {
+                        User
+                        .where(key1)
+                        .ne(val1)
+                        .where(key2)
+                        .equals(val2)
+                        .where(key3)
+                        .equals(val3)
+                        .then(docs => {
+                            res.status(200).json({
+                                success: true,
+                                data: docs
+                            })
+                        })
+                        .catch(err => {
+                            res.status(404).json({
+                                success: false,
+                                message: err.message
+                            })
+                        })
+                    }
+                    if(rel1 === "=" && rel2 === "!=" && rel3 === "!=") {
+                        User
+                        .where(key1)
+                        .equals(val1)
+                        .where(key2)
+                        .ne(val2)
+                        .where(key3)
+                        .ne(val3)
+                        .then(docs => {
+                            res.status(200).json({
+                                success: true,
+                                data: docs
+                            })
+                        })
+                        .catch(err => {
+                            res.status(404).json({
+                                success: false,
+                                message: err.message
+                            })
+                        })
+                    }
+                    if(rel1 === "!=" && rel2 === "=" && rel3 === "!=") {
+                        User
+                        .where(key1)
+                        .ne(val1)
+                        .where(key2)
+                        .equals(val2)
+                        .where(key3)
+                        .ne(val3)
+                        .then(docs => {
+                            res.status(200).json({
+                                success: true,
+                                data: docs
+                            })
+                        })
+                        .catch(err => {
+                            res.status(404).json({
+                                success: false,
+                                message: err.message
+                            })
+                        })
+                    }
+                    if(rel1 === "!=" && rel2 === "!=" && rel3 === "=") {
+                        User
+                        .where(key1)
+                        .ne(val1)
+                        .where(key2)
+                        .ne(val2)
+                        .where(key3)
+                        .equals(val3)
+                        .then(docs => {
+                            res.status(200).json({
+                                success: true,
+                                data: docs
+                            })
+                        })
+                        .catch(err => {
+                            res.status(404).json({
+                                success: false,
+                                message: err.message
+                            })
+                        })
+                    }
+                    if(rel1 === "!=" && rel2 === "!=" && rel3 === "!=") {
+                        User
+                        .where(key1)
+                        .ne(val1)
+                        .where(key2)
+                        .ne(val2)
+                        .where(key3)
+                        .ne(val3)
+                        .then(docs => {
+                            res.status(200).json({
+                                success: true,
+                                data: docs
+                            })
+                        })
+                        .catch(err => {
+                            res.status(404).json({
+                                success: false,
+                                message: err.message
+                            })
+                        })
+                    }
+                    if(rel1 === "=" && rel2 === "=" && rel3 === "=") {
+                        User
+                        .where(key1)
+                        .equals(val1)
+                        .where(key2)
+                        .equals(val2)
+                        .where(key3)
+                        .equals(val3)
+                        .then(docs => {
+                            res.status(200).json({
+                                success: true,
+                                data: docs
+                            })
+                        })
+                        .catch(err => {
+                            res.status(404).json({
+                                success: false,
+                                message: err.message
+                            })
+                        })
+                    }
+
+
+
                 })
             } catch (error) {
                 console.log(error.message);
