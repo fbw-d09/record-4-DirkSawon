@@ -291,7 +291,7 @@ exports.filterUser = async (req, res) => {
                             })
                         })
                     }
-                    if(rel1 === "=" && rel2 === "=" && rel3 === "!=") {
+                    else if(rel1 === "=" && rel2 === "=" && rel3 === "!=") {
                         User
                         .where(key1)
                         .equals(val1)
@@ -312,7 +312,7 @@ exports.filterUser = async (req, res) => {
                             })
                         })
                     }
-                    if(rel1 === "=" && rel2 === "!=" && rel3 === "=") {
+                    else if(rel1 === "=" && rel2 === "!=" && rel3 === "=") {
                         User
                         .where(key1)
                         .equals(val1)
@@ -333,7 +333,7 @@ exports.filterUser = async (req, res) => {
                             })
                         })
                     }
-                    if(rel1 === "!=" && rel2 === "=" && rel3 === "=") {
+                    else if(rel1 === "!=" && rel2 === "=" && rel3 === "=") {
                         User
                         .where(key1)
                         .ne(val1)
@@ -354,7 +354,7 @@ exports.filterUser = async (req, res) => {
                             })
                         })
                     }
-                    if(rel1 === "=" && rel2 === "!=" && rel3 === "!=") {
+                    else if(rel1 === "=" && rel2 === "!=" && rel3 === "!=") {
                         User
                         .where(key1)
                         .equals(val1)
@@ -375,7 +375,7 @@ exports.filterUser = async (req, res) => {
                             })
                         })
                     }
-                    if(rel1 === "!=" && rel2 === "=" && rel3 === "!=") {
+                    else if(rel1 === "!=" && rel2 === "=" && rel3 === "!=") {
                         User
                         .where(key1)
                         .ne(val1)
@@ -396,7 +396,7 @@ exports.filterUser = async (req, res) => {
                             })
                         })
                     }
-                    if(rel1 === "!=" && rel2 === "!=" && rel3 === "=") {
+                    else if(rel1 === "!=" && rel2 === "!=" && rel3 === "=") {
                         User
                         .where(key1)
                         .ne(val1)
@@ -417,7 +417,7 @@ exports.filterUser = async (req, res) => {
                             })
                         })
                     }
-                    if(rel1 === "!=" && rel2 === "!=" && rel3 === "!=") {
+                    else if(rel1 === "!=" && rel2 === "!=" && rel3 === "!=") {
                         User
                         .where(key1)
                         .ne(val1)
@@ -438,30 +438,13 @@ exports.filterUser = async (req, res) => {
                             })
                         })
                     }
-                    if(rel1 === "=" && rel2 === "=" && rel3 === "=") {
-                        User
-                        .where(key1)
-                        .equals(val1)
-                        .where(key2)
-                        .equals(val2)
-                        .where(key3)
-                        .equals(val3)
-                        .then(docs => {
-                            res.status(200).json({
-                                success: true,
-                                data: docs
-                            })
-                        })
-                        .catch(err => {
+                    else {
                             res.status(404).json({
                                 success: false,
-                                message: err.message
+                                message: "operation not available"
                             })
-                        })
+                    
                     }
-
-
-
                 })
             } catch (error) {
                 console.log(error.message);
